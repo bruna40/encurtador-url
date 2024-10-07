@@ -17,9 +17,13 @@ export function Home() {
   
         const fullUrl = `https://${response.data.urlEncurtada}`;
         setShortenedUrl(fullUrl); 
-      } catch (error: any) {
-        setError(error.message); 
-      }
+      } catch (error: unknown) {
+            if (axios.isAxiosError(error)) {
+            setError(error.message); 
+            } else {
+            setError('Ocorreu um erro inesperado');
+            }
+        }
     };
 
 

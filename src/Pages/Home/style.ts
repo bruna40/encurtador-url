@@ -6,10 +6,10 @@ export const ContainerMain = styled.main`
   display: flex;
   flex-direction: column;
   
-  min-height: 85vh;
+
   padding: 1rem;
 
-
+  min-height: 85vh;
   @media(min-width: 769px) {
     min-height: 75vh;
   }
@@ -23,6 +23,10 @@ export const ContainerMain = styled.main`
     box-sizing: border-box;
     font-size: 0.9rem;
     margin-top: 10rem;
+
+    &:focus {
+      border-color: ${({ theme }) => theme['--color-blue']};
+    }
   }
   button {
     padding: 0.5rem;
