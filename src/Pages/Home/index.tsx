@@ -1,5 +1,5 @@
 import { Header } from "../../Components/Header/index";
-import { Footer } from "../../Components/Footer";
+import { Footer } from "../../Components/Footer/index";
 import { useState } from "react";
 import { ErrorCard } from "../../Components/ErrorCard";
 import axios from "axios";

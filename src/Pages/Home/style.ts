@@ -5,8 +5,14 @@ export const ContainerMain = styled.main`
   margin-top: 2rem;
   display: flex;
   flex-direction: column;
-
+  
+  min-height: 85vh;
   padding: 1rem;
+
+
+  @media(min-width: 769px) {
+    min-height: 75vh;
+  }
 
   input {
     width: 100%;
@@ -16,6 +22,7 @@ export const ContainerMain = styled.main`
     border-radius: 0.25rem;
     box-sizing: border-box;
     font-size: 0.9rem;
+    margin-top: 10rem;
   }
   button {
     padding: 0.5rem;
