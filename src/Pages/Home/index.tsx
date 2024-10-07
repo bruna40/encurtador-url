@@ -10,21 +10,25 @@ export function Home() {
     const [shortenedUrl, setShortenedUrl] = useState('');
     const [error, setError] = useState<string | null>(null);
     const shortenUrl = async () => {
-      setError(null);
-      try {
-        const response = await axios.post('/encurtamentos', { url });
-        
-  
-        const fullUrl = `https://${response.data.urlEncurtada}`;
-        setShortenedUrl(fullUrl); 
-      } catch (error: unknown) {
-            if (axios.isAxiosError(error)) {
-            setError(error.message); 
-            } else {
+        setError(null);
+        try {
+          const baseUrl = import.meta.env.MODE === 'development'
+            ? '/encurtamentos'
+            : 'https://api.encurtador.dev/encurtamentos';
+      
+          const response = await axios.post(baseUrl, { url });
+      
+          const fullUrl = `https://${response.data.urlEncurtada}`;
+          setShortenedUrl(fullUrl);
+        } catch (error: unknown) {
+          if (axios.isAxiosError(error)) {
+            setError(error.message);
+          } else {
             setError('Ocorreu um erro inesperado');
-            }
+          }
         }
-    };
+      };
+      
 
 
     const handleCloseError = () => {
